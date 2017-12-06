@@ -18,6 +18,17 @@ Helpful Links
 
 ----------
 
+Redux/React-Redux/React
+-------------
+>
+> Redux serves to construct the application state and React provides the views to display that state.
+>  
+> **Redux** and **React** are inherently disconnected and it's only through the use of **React-Redux** that we get any clear *connection* between the two libraries.
+>  
+>
+
+----------
+
 
 Reducers
 -------------
@@ -31,7 +42,9 @@ Reducers
 > 1) Create the *reducer*
 > 2) Wire it into the application.
 >  
->
+> All *reducers* get **2** arguments:
+- **current state**
+- **action**
 
 
 ----------

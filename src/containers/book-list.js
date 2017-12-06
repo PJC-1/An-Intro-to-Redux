@@ -10,7 +10,8 @@ class BookList extends Component {
         <li
           key={book.title}
           onClick={() => this.props.selectBook(book)}
-          className="list-group-item">
+          className="list-group-item"
+        >
           {book.title}
         </li>
       );
@@ -22,7 +23,7 @@ class BookList extends Component {
       <ul className="list-group col-sm-4">
         {this.renderList()}
       </ul>
-    )
+    );
   }
 }
 
@@ -39,7 +40,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, the result should be passed
   // to all of our reducers
-  return bindActionCreators({ selectBook: selectBook }, dispatch)
+  return bindActionCreators({ selectBook: selectBook }, dispatch);
 }
 
 // Promote BookList from a component to a container - it needs to know
