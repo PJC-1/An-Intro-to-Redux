@@ -20,9 +20,14 @@ Helpful Links
 
 Redux
 -------------
-> **Actions**
+> Main take away is that *Redux* is used to maintain the application's *state*, and that the *state* is a plain javascript *object*.
 >  
->  We bind an **action** to a component to further connect
+>  The *application's state* is completely different than a *component's state* and not connected in any way whatsoever.
+>  
+>  
+> **Actions**
+>  The *reducers* are in charge of *manipulating* or *changing* the *application state* over time. This is done through the use of *actions*, so whenever an *action* is dispatched, it flows through all of the different *reducers* in the application. Where, each *reducer* has the option to return a different piece of *state* than normal, based on the *type* of action received.
+>  **actions** will always have a ```type``` defined. And can optionally have a ```payload``` or any number of other properties. Generally (by convention), we use ```payload``` when we are passing a piece of data along with the *action*.
 >   
 >   **bindActionCreators(actionCreators, dispatch)**
 >  
@@ -32,6 +37,10 @@ Redux
 >  The only use case for *bindActionCreators* is when you want to pass some action creators down to a component that isn't aware of *Redux*, and you don't want to pass ```dispatch``` or the Redux store to it.
 >  
 >  [redux documentation](https://redux.js.org/docs/api/bindActionCreators.html) for more information/examples about the *bindActionCreators()* function.
+>   
+>  **Action Creators**
+>   
+>   *Action Creators* are simple functions that return an *action*, and an *action* is a plain javascript object.
 
 Redux/React-Redux/React
 -------------
@@ -51,7 +60,25 @@ Reducers
 -	A **reducer** is a function that returns a piece of the application's state.
 - The application's *state* is a plain javascript object.
 - **Reducers** produce the value of the applications state.
+- The *application's state* is formed by the *reducers*.
+- All *reducers* are combined together with the use of the ```combineReducers()``` method.
+- For each key in the ```combineReducers()``` object a single *reducer* is assigned. Where that specific reducer assigned is responsible for producing that particular piece of *state*
+>
+```
+//example
+import { combineReducers } from 'redux';
+import BooksReducer from './reducer_books';
+import ActiveBook from './reducer_active_book';
 
+const rootReducer = combineReducers({
+  books: BooksReducer,
+  activeBook: ActiveBook
+});
+
+export default rootReducer;
+```
+>
+> In the above example, whatever *state* ```ActiveBook``` returns will be available as ```activeBook``` piece of *application state*
 >
 > Creating a **reducer** is a two step process:
 > 1) Create the *reducer*
